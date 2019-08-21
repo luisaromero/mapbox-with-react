@@ -32,15 +32,15 @@ class App extends Component {
       
       let newList = [...this.state.favorite] 
       for( let i = 0; i < newList.length; i++){ 
-        if ( newList[i].Name === a) {
+        if ( newList[i].name === a) {
             newList[i].count++;
           return this.setState({favorite:newList})
          
         }
       }
 this.setState({favorite: this.state.favorite.concat([{name : a,  id:this.index, count:1 }])});
-console.log(newList)
 this.index ++;
+console.log(newList)
 }
       
       render() {
@@ -57,11 +57,9 @@ this.index ++;
                <div className="nav" >
           <NavigationControl onViewportChange={(viewport) => this.setState({viewport})}/> </div>
           {store.map(ele => ( <Marker latitude={ele.Coordinates.lat} longitude={ele.Coordinates.lng}>
-            <button  name ={ele.Name}  onClick={(e) =>
-             
-             this.addFavorite(e , this , this.props.Name)}>
-               
-             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVvf5xv5YL5JUmVR4j9b3HCuBJ7URH5pKTsJx_pkrk9zcsWn9s"></img>
+            <button className= "btn" name ={ele.Name}  onClick={(e) =>
+             this.addFavorite(e  ,this , this.name)}>
+               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVvf5xv5YL5JUmVR4j9b3HCuBJ7URH5pKTsJx_pkrk9zcsWn9s"></img>
               </button>
           </Marker>
 
