@@ -8,9 +8,10 @@ import  store from './store_directory.json'
 const TOKEN='pk.eyJ1IjoibHVpc2Fyb21lcm8iLCJhIjoiY2p6aGV5MXVpMHJ1ZTNucGhwcng3Y3N0OSJ9.BYd9a8Gh3nCUjwcpQF8scA'; 
 
 class App extends Component {
-  constructor() {
-      super();
+  constructor(props) {
+      super(props);
       this.state = {
+        favorite: [],
         viewport: {
           latitude: 19.432608,  
           longitude: -99.133209,
@@ -19,13 +20,28 @@ class App extends Component {
           pitch: 0,
           width: '100%',
           height: 500,
-         favorite: []
+          
         } 
-      } ;
+      };
+    
+      this.index = 0;
+      this.addFavorite =  this.addFavorite.bind(this);
+      
     } 
-    addFavorite(store) {
-          alert('agregado a favoritos')
+    addFavorite(a) {
+      
+      let newList = [...this.state.favorite] 
+      for( let i = 0; i < newList.length; i++){ 
+        if ( newList[i].Name === a) {
+            newList[i].count++;
+          return this.setState({favorite:newList})
+         
         }
+      }
+this.setState({favorite: this.state.favorite.concat([{name : a,  id:this.index, count:1 }])});
+console.log(newList)
+this.index ++;
+}
       
       render() {
         
@@ -40,9 +56,11 @@ class App extends Component {
               mapboxApiAccessToken={TOKEN}>
                <div className="nav" >
           <NavigationControl onViewportChange={(viewport) => this.setState({viewport})}/> </div>
-          {store.map(park => ( <Marker latitude={park.Coordinates.lat} longitude={park.Coordinates.lng}>
-            <button className="btn" onClick={
-             this.addFavorite.bind(this)}>
+          {store.map(ele => ( <Marker latitude={ele.Coordinates.lat} longitude={ele.Coordinates.lng}>
+            <button  name ={ele.Name}  onClick={(e) =>
+             
+             this.addFavorite(e , this , this.props.Name)}>
+               
              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVvf5xv5YL5JUmVR4j9b3HCuBJ7URH5pKTsJx_pkrk9zcsWn9s"></img>
               </button>
           </Marker>
@@ -54,7 +72,3 @@ class App extends Component {
 }
 
        export default App
-
-
-
-         {/*  */}
