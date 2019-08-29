@@ -44,7 +44,7 @@ console.log(newList)
 }
       
       render() {
-        
+        console.log(store)
           const {viewport} = this.state;
       return (
             <MapGL
