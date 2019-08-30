@@ -20,7 +20,7 @@
         <ul>
           <li> Como estudiante, quiero ver un mapa de <b> Ciudad de México </b> </li>
           <li> Como estudiante, quiero ver un mapa que tenga <b> todas las tiendas </b> representadas como <b> marcadores / pines </b> en el mapa.  </li>
-          <li> Como estudiante, quiero poder hacer clic en el marcador de una tienda y agregarlo a una lista de <b> ' Mis tiendas favoritas ' </b> </li>
+          <li> Como estudiante, quiero poder hacer clic en el marcador de una tienda y agregarlo a una lista de <b>Mis tiendas favoritas </b> </li>
           <li> Como estudiante, quiero poder hacer clic en una tienda en  ' Mis tiendas favoritas '  y eliminarla de la lista </ul>
 
 ### Planificación 📌
@@ -39,7 +39,7 @@ La planificación dada al reto en poco tiempo , se hizo en *projects* de GitHub 
 
 
 ### Gracias por visitar mi proyecto  🎁
-![](https://media3.giphy.com/media/xIJLgO6rizUJi/giphy.gif)
+![gif alicia dando gracias](https://media3.giphy.com/media/xIJLgO6rizUJi/giphy.gif)
  ##### Con ❤️ [Luisa Romero](https://github.com/luisaromero) 🦋
 
 
