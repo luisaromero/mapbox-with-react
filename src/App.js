@@ -53,9 +53,9 @@ console.log(newList)
              
               onViewportChange={(viewport) => this.setState({viewport})}
               mapStyle="mapbox://styles/luisaromero/cjzhof347397k1cs2nee373nj"
-              mapboxApiAccessToken={TOKEN}>
-               <div className="nav" >
-          <NavigationControl onViewportChange={(viewport) => this.setState({viewport})}/> </div>
+              mapboxApiAccessToken={TOKEN}
+              >
+               
           {store.map(ele => ( <Marker latitude={ele.Coordinates.lat} longitude={ele.Coordinates.lng}>
             <button className= "btn" name ={ele.Name}  onClick={(e) =>
              this.addFavorite(e  ,this , this.name)}>
@@ -64,6 +64,8 @@ console.log(newList)
           </Marker>
 
           ))} 
+          <div className="nav">
+          <NavigationControl onViewportChange={(viewport) => this.setState({viewport})}/> </div>
       </MapGL>
     );
   }
