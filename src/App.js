@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react';
+import React, {useState , useEffect} from 'react';
 import MapGL, {NavigationControl , Marker,Popup} from 'react-map-gl';
 import  store from './store_directory.json'
 
@@ -18,6 +18,8 @@ export default function App() {
           width: '100%',
           height: 500        
  });
+
+ const [selectedStore,setSelectedStore] = useState(null)
       
       return (
         <React.Fragment>
@@ -27,20 +29,26 @@ export default function App() {
               onViewportChange={(viewport) => {setviewport(viewport)}}
               mapStyle="mapbox://styles/luisaromero/cjzhof347397k1cs2nee373nj"
               mapboxApiAccessToken={TOKEN}  >
-       
           {store.map(ele => ( <Marker latitude={ele.Coordinates.lat} longitude={ele.Coordinates.lng } >
-            <button className= "btn" name ={ele.Name} onClick={(e) =>
-             e.preventDefault()}>
+            <button className= "btn" name ={ele.Name} onClick={(e) => {
+             e.preventDefault();
+              setSelectedStore(ele)}}>
                <img src="https://images.vexels.com/media/users/3/154655/isolated/preview/71dccbb077597dea55dfc5b7a7af52c4-ubicaci--n-pin-icono-de-contacto-by-vexels.png" alt="icono"></img>
               </button>
           </Marker>
-          ))} 
+          ))}
+          {selectedStore ? 
+          (<Popup latitude={selectedStore.Coordinates.lat} longitude={selectedStore.Coordinates.lng}
+          onClose={() =>{
+          setSelectedStore(null)}}>
+          <div>
+          <h2>{selectedStore.Name}</h2>
+           <p>{selectedStore.Adress}</p> 
+            </div>
+          </Popup>):null} 
 
-          {/* {selectedStore ? (<Popup latitude={selectedStore.Coordinates.lat} longitude={selectedStore.Coordinates.lng}>
-      <div>hello</div>
-          </Popup>):null} */}
            <div className="nav">
-          <NavigationControl  onViewportChange={(viewport) => this.setState({viewport})}/> </div>
+          <NavigationControl  onViewportChange={(viewport) => {setviewport(viewport)}}/> </div>
       </MapGL>
      
       </React.Fragment>
