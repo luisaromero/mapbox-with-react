@@ -19,12 +19,10 @@ body {
 .mapboxgl-ctrl-group:not(:empty){
   background-color: transparent;
   box-shadow: none!important
-
 }
 .logo{
   font-family: 'Lilita One', cursive;
   text-align: center;
   color: rgb(223, 48, 208);
-  
 }
 
