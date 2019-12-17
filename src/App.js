@@ -48,6 +48,9 @@ console.log(newList)
         
           const {viewport} = this.state;
       return (
+        <React.Fragment>
+                    <div className="logo"><h1>CDMXSTORES</h1><i className="fas fa-shopping-cart"></i></div>
+
             <MapGL
               {...viewport}
               onViewportChange={(viewport) => this.setState({viewport})}
@@ -60,11 +63,15 @@ console.log(newList)
                <img src="https://images.vexels.com/media/users/3/154655/isolated/preview/71dccbb077597dea55dfc5b7a7af52c4-ubicaci--n-pin-icono-de-contacto-by-vexels.png" alt="icono"></img>
               </button>
           </Marker>
-
+         
           ))} 
-          <div className="nav">
-          <NavigationControl onViewportChange={(viewport) => this.setState({viewport})}/> </div>
+           <div className="nav">
+          <NavigationControl  onViewportChange={(viewport) => this.setState({viewport})}/> </div>
       </MapGL>
+     
+      </React.Fragment>
+      
+
     );
   }
 }
