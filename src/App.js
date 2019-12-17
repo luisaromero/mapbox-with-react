@@ -19,7 +19,16 @@ export default function App() {
           height: 500        
  });
 
- const [selectedStore,setSelectedStore] = useState(null)
+ const [selectedStore,setSelectedStore] = useState(null);
+
+ useEffect(() => {
+  const listener  = e =>{
+    if (e.key === "Escape"){
+      setSelectedStore(null);
+    }
+  };
+  window.addEventListener("keydown", listener);
+ }, []) ;
       
       return (
         <React.Fragment>
@@ -29,7 +38,7 @@ export default function App() {
               onViewportChange={(viewport) => {setviewport(viewport)}}
               mapStyle="mapbox://styles/luisaromero/cjzhof347397k1cs2nee373nj"
               mapboxApiAccessToken={TOKEN}  >
-          {store.map(ele => ( <Marker latitude={ele.Coordinates.lat} longitude={ele.Coordinates.lng } >
+          {store.map(ele => ( <Marker key={ele.Address} latitude={ele.Coordinates.lat} longitude={ele.Coordinates.lng } >
             <button className= "btn" name ={ele.Name} onClick={(e) => {
              e.preventDefault();
               setSelectedStore(ele)}}>
@@ -43,7 +52,7 @@ export default function App() {
           setSelectedStore(null)}}>
           <div>
           <h2>{selectedStore.Name}</h2>
-           <p>{selectedStore.Adress}</p> 
+           <p>{selectedStore.Address}</p> 
             </div>
           </Popup>):null} 
 
