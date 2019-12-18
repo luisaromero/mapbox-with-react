@@ -16,7 +16,7 @@ export default function App() {
           bearing: 0,
           pitch: 0,
           width: '100%',
-          height: 500        
+          height: 350        
  });
 
  const [selectedStore,setSelectedStore] = useState(null);
@@ -50,19 +50,19 @@ export default function App() {
           (<Popup latitude={selectedStore.Coordinates.lat} longitude={selectedStore.Coordinates.lng}
           onClose={() =>{
           setSelectedStore(null)}}>
-          <div>
-          <h2>{selectedStore.Name}</h2>
+          <div id="popup">
+          <h4>{selectedStore.Name}</h4>
            <p>{selectedStore.Address}</p> 
+           <button><i class="fas fa-heart"></i></button>
             </div>
           </Popup>):null} 
 
            <div className="nav">
           <NavigationControl  onViewportChange={(viewport) => {setviewport(viewport)}}/> </div>
       </MapGL>
-     
+     <div><h2>Agrega tus tiendas a favoritos</h2>
+     <p>Pincha en el corazón en la tienda que deseas seleccionar y se agregará a lista </p></div>
       </React.Fragment>
-      
-
       );
           }
   
