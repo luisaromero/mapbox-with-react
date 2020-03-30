@@ -4,6 +4,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: rgb(138, 224, 196);
+ 
 }
 
 .btn{
@@ -21,10 +22,16 @@ body {
   box-shadow: none!important
 }
 .logo{
-  font-family: 'Lilita One', cursive;
   text-align: center;
   color: rgb(223, 48, 208);
+  font-family: 'Lilita One', cursive;
 }
+.mapboxgl-popup-close-button {
+  font-size: x-large;
+}
+
 #popup h4{
   text-align: center;
+  font-weight: lighter;
+ 
 }

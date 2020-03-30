@@ -32,7 +32,7 @@ export default function App() {
       
       return (
         <React.Fragment>
-          <div className="logo"><h1>CDMXSTORES</h1></div>
+          <div className="logo"><h1>CDMXSTORES <i className="fas fa-shopping-cart"></i></h1></div>
             <MapGL
               {...viewport}
               onViewportChange={(viewport) => {setviewport(viewport)}}
@@ -42,7 +42,7 @@ export default function App() {
             <button className= "btn" name ={ele.Name} onClick={(e) => {
              e.preventDefault();
               setSelectedStore(ele)}}>
-               <img src="https://images.vexels.com/media/users/3/154655/isolated/preview/71dccbb077597dea55dfc5b7a7af52c4-ubicaci--n-pin-icono-de-contacto-by-vexels.png" alt="icono"></img>
+                <i className="fas fa-map-marker-alt"></i>
               </button>
           </Marker>
           ))}
@@ -53,14 +53,15 @@ export default function App() {
           <div id="popup">
           <h4>{selectedStore.Name}</h4>
            <p>{selectedStore.Address}</p> 
-           <button><i class="fas fa-heart"></i></button>
+           <button><i className="fas fa-heart"></i></button>
             </div>
           </Popup>):null} 
 
            <div className="nav">
           <NavigationControl  onViewportChange={(viewport) => {setviewport(viewport)}}/> </div>
       </MapGL>
-     <div><h2>Agrega tus tiendas a favoritos</h2>
+     <div className="Favorites">
+       <h2>Agrega tus tiendas a favoritos</h2>
      <p>Pincha en el corazón en la tienda que deseas seleccionar y se agregará a lista </p></div>
       </React.Fragment>
       );
