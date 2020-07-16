@@ -12,15 +12,15 @@ export default function App() {
  const [viewport,setviewport]= useState({
           latitude: 19.432608,  
           longitude: -99.133209,
-          zoom: 10,
+          zoom: 11,
           bearing: 0,
           pitch: 0,
           width: '100%',
-          height: 350        
+          height: '100%'       
  });
 
  const [selectedStore,setSelectedStore] = useState(null);
-
+ console.log(selectedStore)
  useEffect(() => {
   const listener  = e =>{
     if (e.key === "Escape"){
@@ -32,11 +32,13 @@ export default function App() {
       
       return (
         <React.Fragment>
-          <div className="logo"><h1>CDMXSTORES <i className="fas fa-shopping-cart"></i></h1></div>
+          <div className="ContainerMap">
+          <div className="Map">
+          {/* <div className="logo"><h1>CDMXSTORES <i className="fas fa-shopping-cart"></i></h1></div> */}
             <MapGL
               {...viewport}
               onViewportChange={(viewport) => {setviewport(viewport)}}
-              mapStyle="mapbox://styles/luisaromero/cjzhof347397k1cs2nee373nj"
+              mapStyle="mapbox://styles/mapbox/streets-v9"
               mapboxApiAccessToken={TOKEN}  >
           {store.map(ele => ( <Marker key={ele.Address} latitude={ele.Coordinates.lat} longitude={ele.Coordinates.lng } >
             <button className= "btn" name ={ele.Name} onClick={(e) => {
@@ -50,19 +52,20 @@ export default function App() {
           (<Popup latitude={selectedStore.Coordinates.lat} longitude={selectedStore.Coordinates.lng}
           onClose={() =>{
           setSelectedStore(null)}}>
-          <div id="popup">
-          <h4>{selectedStore.Name}</h4>
+          <div className="popup">
+          <h1>{selectedStore.Name}</h1>
            <p>{selectedStore.Address}</p> 
-           <button><i className="fas fa-heart"></i></button>
+           
+           <button><p>Agregar a favoritos <i className="fas fa-star"></i></p></button>
             </div>
           </Popup>):null} 
-
-           <div className="nav">
-          <NavigationControl  onViewportChange={(viewport) => {setviewport(viewport)}}/> </div>
       </MapGL>
+      </div>
      <div className="Favorites">
-       <h2>Agrega tus tiendas a favoritos</h2>
-     <p>Pincha en el corazón en la tienda que deseas seleccionar y se agregará a lista </p></div>
+       <h1>Agrega tus tiendas a favoritos</h1>
+     <p>Pincha en el corazón en la tienda que deseas seleccionar y se agregará a lista </p>
+     </div>
+     </div>
       </React.Fragment>
       );
           }

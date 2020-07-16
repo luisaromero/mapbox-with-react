@@ -6,8 +6,34 @@ body {
   background-color: rgb(138, 224, 196);
  
 }
-
-.btn{
+.ContainerMap{
+  display: flex;
+  flex-direction:row-reverse;
+}
+.Map{
+  width: 70vw;
+  height: 100vh;
+}
+.Favorites{
+background: rgb(179, 152, 137);
+}
+.Favorites h1{
+  color: rgb(204, 69, 98)
+}
+.popup{
+  opacity: 0.9;
+}
+.popup h1{
+  font-size: 14px;
+}
+.popup p{
+  font-size: 12px;
+}
+.popup button{
+  background: salmon;
+  color: antiquewhite;
+}
+button{
   background: transparent;
   border: none;
   cursor: pointer;
@@ -34,4 +60,8 @@ body {
   text-align: center;
   font-weight: lighter;
  
+}
+.fas.fa-map-marker-alt{
+  color:rgb(204, 69, 98);
+  font-size: 16px;
 }
